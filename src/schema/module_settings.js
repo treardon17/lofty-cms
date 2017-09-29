@@ -38,5 +38,6 @@ GQC.rootMutation().addFields({
   moduleSettingRemoveMany: ModuleSettingTC.getResolver('removeMany'),
 });
  
-const graphqlSchema = GQC.buildSchema();
-module.exports = graphqlSchema;
+// const graphqlSchema = GQC.buildSchema();
+// module.exports = graphqlSchema;
+module.exports = GQC;
