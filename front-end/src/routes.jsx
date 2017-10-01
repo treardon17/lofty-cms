@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import AppState from './state/AppState';
+// import modules
+import Sidebar from './modules/Sidebar/Sidebar.jsx';
 // import styles
 import './resources/styles/base.scss';
 // import pages
@@ -23,7 +25,10 @@ export default class Routes extends React.Component {
     return (
       <BrowserRouter>
         <div id="app-container">
-          {this.state.routes}
+          <Sidebar />
+          <div className="content-container">
+            {this.state.routes}
+          </div>
         </div>
       </BrowserRouter>
     );

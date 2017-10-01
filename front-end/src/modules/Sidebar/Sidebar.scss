@@ -1,0 +1,41 @@
+@import '../../resources/styles/_variables.scss';
+@import '../../resources/styles/_mixins.scss';
+
+$sidebar-width: 250px;
+$transition-duration: 500ms;
+
+.sidebar{
+  .sidebar-content{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    width: $sidebar-width;
+
+    // Closed styles
+    &.closed{
+      width: 0;
+    }
+
+    // Entering
+    &.sidebar-state-enter {
+      width: 0;
+
+      // Transition complete
+      &.sidebar-state-enter-active{
+        width: $sidebar-width;
+        transition: width $transition-duration $bezier;
+      }
+    }
+    
+    // Exiting
+    &.sidebar-state-exit {
+      width: $sidebar-width;
+      
+      // Exit complete
+      &.sidebar-state-exit-active{
+        width: 0;
+        transition: width $transition-duration $bezier;
+      }
+    }
+  }
+}
