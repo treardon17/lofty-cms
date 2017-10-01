@@ -11,7 +11,7 @@ export default class Sidebar extends React.Component {
     super(props);
     this.openDuration = 800;
     this.itemDelay = 50;
-    this.itemDuration = 700;
+    this.itemDuration = 750;
 
     this.state = {
       open: false,
@@ -34,7 +34,7 @@ export default class Sidebar extends React.Component {
   getSidebarTransitions() {
     const sidebarItems = [];
     for (let i = 0; i < this.state.sidebarItems.length; i++) {
-      const calculatedDelay = ((i) * this.itemDelay) + (this.openDuration * 0.25);
+      const calculatedDelay = ((i) * this.itemDelay) + (this.openDuration * 0.1);
       sidebarItems.push(
         <VelocityComponent
           key={i}
