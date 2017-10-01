@@ -5,37 +5,23 @@ $sidebar-width: 250px;
 $transition-duration: 500ms;
 
 .sidebar{
+  overflow: hidden;
+  box-shadow: 2px 0px 10px rgba($black, 0.3);
+
+  // SIDE BAR CONTENT ---
   .sidebar-content{
-    background-color: black;
     width: 100%;
     height: 100%;
     width: $sidebar-width;
 
-    // Closed styles
-    &.closed{
-      width: 0;
-    }
 
-    // Entering
-    &.sidebar-state-enter {
-      width: 0;
+    // SIDE BAR ITEMS ---
+    .sidebar-item{
+      width: 100%;
 
-      // Transition complete
-      &.sidebar-state-enter-active{
-        width: $sidebar-width;
-        transition: width $transition-duration $bezier;
-      }
-    }
-    
-    // Exiting
-    &.sidebar-state-exit {
-      width: $sidebar-width;
-      
-      // Exit complete
-      &.sidebar-state-exit-active{
-        width: 0;
-        transition: width $transition-duration $bezier;
-      }
+      // Initial state before animating in
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
     }
   }
 }

@@ -14,7 +14,10 @@ $brand-primary:   #000000;
 $brand-light:     lighten($brand-primary, 10%);
 $brand-dark:      darken($brand-primary, 10%);
 
-$dark-gray:     #2F313E;
+$white:           #F1F6F8;
+$dark-white:      #E9F1F5;
+$grey:            #7F8488;
+$dark-gray:       #2F313E;
 
 // Layout
 $grid-small-phone-only:          450px;
@@ -23,4 +26,11 @@ $grid-tablet-portrait-down:      900px;
 $grid-tablet-landscape-down:    1200px;
 $grid-desktop-down:             1600px;
 
+// TRANSITIONS
 $bezier: cubic-bezier(.55,.09,.45,.93);
+
+// MEASUREMENTS
+$small-spacing: 10px;
+$medium-spacing: 20px;
+$large-spacing: 40px;
+$extra-large-spacing: 60px;

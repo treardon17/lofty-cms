@@ -1,0 +1,28 @@
+@import '../../resources/styles/_variables.scss';
+@import '../../resources/styles/_mixins.scss';
+
+.sidebar-item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: $small-spacing;
+  border: 0;
+  background-color: $white;
+
+  .item-icon{
+    margin: 0 $small-spacing;
+    width: 18px;
+
+    svg{
+      stroke: $grey;
+      width: inherit;
+    }
+  }
+
+  .item-title{
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $grey;
+  }
+}
