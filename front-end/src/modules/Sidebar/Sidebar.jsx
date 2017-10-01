@@ -73,9 +73,9 @@ export default class Sidebar extends React.Component {
       <div className="sidebar">
         { this.getSidebarHeader() }
         <VelocityComponent
-          animation={this.state.open ? { width: "250px" } : { width: "0px" }}
-          duration={this.openDuration}
-          easing={[75, 10]}
+          animation={this.state.open ? { width: "250px" } : { width: "70px" }}
+          duration={this.state.open ? this.openDuration : this.openDuration / 3}
+          easing={this.state.open ? [75, 10] : 'ease-in-out'}
         >
           <div className={classes}>
             { this.getSidebarMenuItems() }
