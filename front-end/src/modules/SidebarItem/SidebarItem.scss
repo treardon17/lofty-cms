@@ -8,6 +8,13 @@
   padding: $small-spacing;
   border: 0;
   background-color: $white;
+  transition: background-color 0.33s ease-in-out;
+  outline: none;
+
+  &:hover{
+    cursor: pointer;
+    background-color: $dark-white;
+  }
 
   .item-icon{
     margin: 0 15px 0 10px;

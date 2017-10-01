@@ -15,8 +15,9 @@ $brand-light:     lighten($brand-primary, 10%);
 $brand-dark:      darken($brand-primary, 10%);
 
 $white:           #F1F6F8;
-$dark-white:      #E9F1F5;
+$dark-white:      #D8E9F0;
 $grey:            #7F8488;
+$transparentGrey: rgba($grey, 0.3);
 $dark-gray:       #2F313E;
 
 // Layout

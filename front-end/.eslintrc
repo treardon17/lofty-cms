@@ -19,6 +19,7 @@
     "class-methods-use-this": 0,
     "no-plusplus": 0,
     "comma-dangle": 0,
-    "no-loop-func": 0
+    "no-loop-func": 0,
+    "react/jsx-no-bind": 0
   }
 }

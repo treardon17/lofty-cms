@@ -25,13 +25,15 @@ export default class Sidebar extends React.Component {
     };
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ open: true });
-    }, 3000);
-  }
+  // // For testing
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     this.setState({ open: true });
+  //   }, 3000);
+  // }
 
-  getSidebarTransitions() {
+  // Sidebar items with transitions
+  getSidebarMenuItems() {
     const sidebarItems = [];
     for (let i = 0; i < this.state.sidebarItems.length; i++) {
       const calculatedDelay = ((i) * this.itemDelay) + (this.openDuration * 0.1);
@@ -50,18 +52,33 @@ export default class Sidebar extends React.Component {
     return sidebarItems;
   }
 
+  getSidebarHeader() {
+    return (
+      <div className="sidebar-header">
+        <div className="header-content">
+          <button className="sidebar-logo" onClick={this.toggleMenu.bind(this)} />
+        </div>
+      </div>
+    );
+  }
+
+  toggleMenu() {
+    this.setState({ open: !this.state.open });
+  }
+
+  // Render element
   render() {
     const classes = `sidebar-content ${(this.state.open ? 'open' : 'closed')}`;
-
     return (
       <div className="sidebar">
+        { this.getSidebarHeader() }
         <VelocityComponent
           animation={this.state.open ? { width: "250px" } : { width: "0px" }}
           duration={this.openDuration}
           easing={[75, 10]}
         >
           <div className={classes}>
-            { this.getSidebarTransitions() }
+            { this.getSidebarMenuItems() }
           </div>
         </VelocityComponent>
       </div>
