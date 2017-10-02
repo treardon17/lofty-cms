@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { VelocityComponent } from 'velocity-react';
 import SidebarItem from '../SidebarItem/SidebarItem.jsx';
 
@@ -9,43 +10,40 @@ import './Sidebar.scss';
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.openDuration = 800;
+    this.openDuration = 250;
     this.itemDelay = 50;
-    this.itemDuration = 750;
+    this.itemDuration = 500;
 
     this.state = {
-      open: false,
-      sidebarItems: [
-        <SidebarItem key="item1" icon="/assets/img/icons/home.svg" title="Home" />,
-        <SidebarItem key="item2" icon="/assets/img/icons/home.svg" title="Home" />,
-        <SidebarItem key="item3" icon="/assets/img/icons/home.svg" title="Home" />,
-        <SidebarItem key="item4" icon="/assets/img/icons/home.svg" title="Home" />,
-        <SidebarItem key="item5" icon="/assets/img/icons/home.svg" title="Home" />,
-      ]
+      open: false
     };
   }
-
-  // // For testing
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.setState({ open: true });
-  //   }, 3000);
-  // }
 
   // Sidebar items with transitions
   getSidebarMenuItems() {
     const sidebarItems = [];
-    for (let i = 0; i < this.state.sidebarItems.length; i++) {
+    for (let i = 0; i < this.props.menuItems.length; i++) {
       const calculatedDelay = ((i) * this.itemDelay) + (this.openDuration * 0.1);
+      const menuItem = this.props.menuItems[i];
       sidebarItems.push(
         <VelocityComponent
           key={i}
-          animation={this.state.open ? { translateY: 0, opacity: 1 } : { translateY: 30, opacity: 0 }}
+          animation={this.state.open ? {
+            paddingTop: '0px',
+            paddingLeft: '10px',
+            paddingBottom: '0px',
+            paddingRight: '10px',
+          } : {
+            paddingTop: '10px',
+            paddingLeft: '10px',
+            paddingBottom: '10px',
+            paddingRight: '10px',
+          }}
           duration={this.itemDuration}
-          easing={[75, 10]}
+          easing={[75, 15]}
           delay={calculatedDelay}
         >
-          {this.state.sidebarItems[i]}
+          <SidebarItem key={i} bigIcon={!this.state.open} icon={menuItem.icon} title={menuItem.title} />
         </VelocityComponent>
       );
     }
@@ -74,8 +72,8 @@ export default class Sidebar extends React.Component {
         { this.getSidebarHeader() }
         <VelocityComponent
           animation={this.state.open ? { width: "250px" } : { width: "70px" }}
-          duration={this.state.open ? this.openDuration : this.openDuration / 3}
-          easing={this.state.open ? [75, 10] : 'ease-in-out'}
+          duration={this.openDuration}
+          easing={'ease-in-out'}
         >
           <div className={classes}>
             { this.getSidebarMenuItems() }
@@ -85,3 +83,7 @@ export default class Sidebar extends React.Component {
     );
   }
 }
+
+Sidebar.propTypes = {
+  menuItems: PropTypes.arrayOf(Object)
+};

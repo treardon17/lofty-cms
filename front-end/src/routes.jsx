@@ -18,6 +18,13 @@ export default class Routes extends React.Component {
       routes: [
         <Route exact path="/" key="home" component={() => <Home state={appState} />} />,
       ],
+      menuItems: [
+        { icon: "/assets/img/icons/home.svg", title: "Home" },
+        { icon: "/assets/img/icons/users.svg", title: "Users" },
+        { icon: "/assets/img/icons/image.svg", title: "Assets" },
+        { icon: "/assets/img/icons/layout.svg", title: "Modules" },
+        { icon: "/assets/img/icons/settings.svg", title: "Settings" }
+      ]
     };
   }
 
@@ -25,7 +32,7 @@ export default class Routes extends React.Component {
     return (
       <BrowserRouter>
         <div id="app-container">
-          <Sidebar />
+          <Sidebar menuItems={this.state.menuItems} />
           <div className="content-container">
             {this.state.routes}
           </div>

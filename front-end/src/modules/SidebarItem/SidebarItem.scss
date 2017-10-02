@@ -10,26 +10,34 @@
   background-color: $white;
   transition: background-color 0.33s ease-in-out;
   outline: none;
+  position: relative;
 
   &:hover{
     cursor: pointer;
     background-color: $dark-white;
   }
 
+  &.big-icon{
+    // justify-content: center;
+    // .item-icon{ width: $closed-menu-icon-size; }
+  }
+
   .item-icon{
-    margin: 0 15px 0 10px;
-    width: 18px;
+    // width: 18px;
+    position: absolute;
+    margin: auto;
 
     svg{
       stroke: $grey;
       width: inherit;
+      height: 100%;
     }
   }
 
   .item-title{
-    margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: $grey;
+    margin-left: 40px;
   }
 }
