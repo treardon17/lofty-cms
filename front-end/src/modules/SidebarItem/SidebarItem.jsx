@@ -11,7 +11,7 @@ import './SidebarItem.scss';
 export default class SidebarItem extends React.Component {
   constructor(props) {
     super(props);
-    this.animationDuration = 200;
+    this.animationDuration = 250;
     this.easing = 'ease-in-out';
   }
 
