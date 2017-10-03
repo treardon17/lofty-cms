@@ -7,13 +7,13 @@
   align-items: center;
   padding: $small-spacing;
   border: 0;
-  background-color: $white;
   transition: background-color 0.33s ease-in-out;
   outline: none;
   position: relative;
+  cursor: pointer;
+  background-color: $white;
 
   &:hover{
-    cursor: pointer;
     background-color: $dark-white;
   }
 

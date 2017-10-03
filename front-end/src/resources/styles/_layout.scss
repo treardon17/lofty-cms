@@ -13,11 +13,15 @@ body {
 }
 
 #app-container{
-  display: flex;
   min-height: 100vh;
 
-  .content-container{
-    flex: auto;
+  .content-wrapper{
+    display: flex;
+    width: 100%;
+
+    .page-container{
+      flex: auto;
+    }
   }
 }
 

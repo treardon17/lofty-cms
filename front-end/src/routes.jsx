@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom';
-import { VelocityTransitionGroup } from 'velocity-react';
+import { VelocityTransitionGroup, VelocityComponent } from 'velocity-react';
 import AppState from './state/AppState';
 import HistoryManager from './history.js';
 // import modules
@@ -70,15 +70,29 @@ export default class Routes extends React.Component {
     return (
       <Router history={HistoryManager.history}>
         <div id="app-container">
-          <Sidebar menuItems={this.state.menuItems} />
-          <VelocityTransitionGroup
-            className="content-container"
-            enter={{ animation: { opacity: 1, translateY: '0%' }, duration: this.pageAnimationDuration }}
-            leave={{ animation: { opacity: 0, translateY: '5%' }, duration: this.pageAnimationDuration, complete: this.animateIn.bind(this) }}
-            runOnMount
+          <VelocityComponent
+            className="app-transition-container"
+            animation={this.state.pageLoaded ? {
+              opacity: 1,
+              translateY: '0%'
+            } : {
+              opacity: 0,
+              translateY: '50%'
+            }}
+            duration={800}
+            easing={[75, 15]}
           >
-            {pageContent}
-          </VelocityTransitionGroup>
+            <div className="content-wrapper">
+              <Sidebar menuItems={this.state.menuItems} />
+              <VelocityTransitionGroup
+                className="page-container"
+                enter={{ animation: { opacity: 1, translateY: '0%' }, duration: this.pageAnimationDuration }}
+                leave={{ animation: { opacity: 0, translateY: '5%' }, duration: this.pageAnimationDuration, complete: this.animateIn.bind(this) }}
+              >
+                {pageContent}
+              </VelocityTransitionGroup>
+            </div>
+          </VelocityComponent>
           {!this.state.pageLoaded ? <PageLoader animationFinish={this.pageLoaded.bind(this)} /> : null}
         </div>
       </Router>
