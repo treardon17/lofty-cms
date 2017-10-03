@@ -11,6 +11,11 @@ import './SidebarItem.scss';
 export default class SidebarItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      hovering: false
+    };
+
     this.animationDuration = 250;
     this.easing = 'ease-in-out';
   }

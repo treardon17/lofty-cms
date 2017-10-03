@@ -4,6 +4,7 @@ import { VelocityTransitionGroup } from 'velocity-react';
 import AppState from './state/AppState';
 import HistoryManager from './history.js';
 // import modules
+import PageLoader from './modules/PageLoader/PageLoader.jsx';
 import Sidebar from './modules/Sidebar/Sidebar.jsx';
 // import styles
 import './resources/styles/base.scss';
@@ -21,6 +22,7 @@ export default class Routes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pageLoaded: false,
       animateIn: true,
       menuItems: [
         { icon: "/assets/img/icons/home.svg", title: "Home", url: "/" },
@@ -38,10 +40,9 @@ export default class Routes extends React.Component {
       ]
     };
 
-    this.animationDuration = 500;
-
     // Listen for history changes
     HistoryManager.addRouteListener({ pushRoute: this.animateOut.bind(this) });
+    this.pageAnimationDuration = 500;
   }
 
   animateOut() {
@@ -53,25 +54,32 @@ export default class Routes extends React.Component {
     this.setState({ animateIn: true });
   }
 
+  pageLoaded() {
+    this.setState({ pageLoaded: true });
+  }
+
   render() {
+    // This is for page transitions
     const pageContent = this.state.animateIn ? (
       <div className="page-wrapper">
         {this.state.routes}
       </div>
     ) : null;
 
+    // This is for loading the page
     return (
       <Router history={HistoryManager.history}>
         <div id="app-container">
           <Sidebar menuItems={this.state.menuItems} />
           <VelocityTransitionGroup
             className="content-container"
-            enter={{ animation: { opacity: 1, translateY: '0%' }, duration: this.animationDuration }}
-            leave={{ animation: { opacity: 0, translateY: '5%' }, duration: this.animationDuration, complete: this.animateIn.bind(this) }}
+            enter={{ animation: { opacity: 1, translateY: '0%' }, duration: this.pageAnimationDuration }}
+            leave={{ animation: { opacity: 0, translateY: '5%' }, duration: this.pageAnimationDuration, complete: this.animateIn.bind(this) }}
             runOnMount
           >
             {pageContent}
           </VelocityTransitionGroup>
+          {!this.state.pageLoaded ? <PageLoader animationFinish={this.pageLoaded.bind(this)} /> : null}
         </div>
       </Router>
     );
