@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { VelocityComponent } from 'velocity-react';
 import PropTypes from 'prop-types';
 import ISVG from 'react-inlinesvg';
 import stylePropType from 'react-style-proptype';
+import history from '../../history.js';
 
 // scss
 import './SidebarItem.scss';
@@ -16,13 +16,17 @@ export default class SidebarItem extends React.Component {
   }
 
   handleClicked() {
+    this.goToPage(this.props.url);
+  }
 
+  goToPage(page) {
+    history.push(page);
   }
 
   render() {
     const classes = `sidebar-item ${this.props.bigIcon ? 'big-icon' : 'regular-icon'}`;
     return (
-      <button style={this.props.style} className={classes} onClick={this.handleClicked}>
+      <button style={this.props.style} className={classes} onClick={this.handleClicked.bind(this)}>
         <VelocityComponent
           animation={this.props.bigIcon ? {
             width: '30px',
@@ -59,6 +63,7 @@ export default class SidebarItem extends React.Component {
 SidebarItem.propTypes = {
   icon: PropTypes.string,
   title: PropTypes.string,
+  url: PropTypes.string,
   bigIcon: PropTypes.bool,
   style: stylePropType
 };

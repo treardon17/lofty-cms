@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppState from '../state/AppState.jsx';
 import Page from './Page.jsx';
+import AppState from '../state/AppState.jsx';
 // import modules here
 
-export default class Home extends React.Component {
+export default class Settings extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <Page id="Home">
-        <h1>Welcome home</h1>
+      <Page id="Settings">
+        <h1>Welcome to the Settings page</h1>
       </Page>
     );
   }
 }
 
-Home.propTypes = {
+Settings.propTypes = {
   state: PropTypes.instanceOf(AppState),
 };

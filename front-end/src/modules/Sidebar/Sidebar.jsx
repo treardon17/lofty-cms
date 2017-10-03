@@ -43,7 +43,7 @@ export default class Sidebar extends React.Component {
           easing={[75, 15]}
           delay={calculatedDelay}
         >
-          <SidebarItem key={i} bigIcon={!this.state.open} icon={menuItem.icon} title={menuItem.title} />
+          <SidebarItem key={i} bigIcon={!this.state.open} icon={menuItem.icon} title={menuItem.title} url={menuItem.url} />
         </VelocityComponent>
       );
     }
