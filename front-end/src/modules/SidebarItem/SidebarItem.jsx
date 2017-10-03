@@ -3,7 +3,7 @@ import { VelocityComponent } from 'velocity-react';
 import PropTypes from 'prop-types';
 import ISVG from 'react-inlinesvg';
 import stylePropType from 'react-style-proptype';
-import history from '../../history.js';
+import HistoryManager from '../../history.js';
 
 // scss
 import './SidebarItem.scss';
@@ -20,7 +20,7 @@ export default class SidebarItem extends React.Component {
   }
 
   goToPage(page) {
-    history.push(page);
+    HistoryManager.pushRoute(page);
   }
 
   render() {

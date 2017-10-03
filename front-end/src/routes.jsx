@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import { VelocityTransitionGroup } from 'velocity-react';
 import AppState from './state/AppState';
-import history from './history.js';
+import HistoryManager from './history.js';
 // import modules
 import Sidebar from './modules/Sidebar/Sidebar.jsx';
 // import styles
@@ -41,11 +41,7 @@ export default class Routes extends React.Component {
     this.animationDuration = 500;
 
     // Listen for history changes
-    history.listen(this.historyChanged.bind(this));
-  }
-
-  historyChanged(location, action) {
-    this.animateOut();
+    HistoryManager.addRouteListener({ pushRoute: this.animateOut.bind(this) });
   }
 
   animateOut() {
@@ -53,6 +49,7 @@ export default class Routes extends React.Component {
   }
 
   animateIn() {
+    HistoryManager.finishRouteTransition();
     this.setState({ animateIn: true });
   }
 
@@ -64,7 +61,7 @@ export default class Routes extends React.Component {
     ) : null;
 
     return (
-      <Router history={history}>
+      <Router history={HistoryManager.history}>
         <div id="app-container">
           <Sidebar menuItems={this.state.menuItems} />
           <VelocityTransitionGroup
