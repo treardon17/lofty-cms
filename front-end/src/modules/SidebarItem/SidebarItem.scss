@@ -13,9 +13,8 @@
   cursor: pointer;
   background-color: $white;
 
-  &:hover{
-    background-color: $dark-white;
-  }
+  &:hover{ background-color: $dark-white; }
+  &.active{ background-color: $dark-white; }
 
   &.big-icon{
     // justify-content: center;

@@ -29,7 +29,8 @@ export default class SidebarItem extends React.Component {
   }
 
   render() {
-    const classes = `sidebar-item ${this.props.bigIcon ? 'big-icon' : 'regular-icon'}`;
+    const onCurrentPage = HistoryManager.history.location.pathname === this.props.url;
+    const classes = `sidebar-item ${this.props.bigIcon ? 'big-icon' : 'regular-icon'} ${(this.props.active || onCurrentPage) ? 'active' : 'inactive'}`;
     return (
       <button style={this.props.style} className={classes} onClick={this.handleClicked.bind(this)}>
         <VelocityComponent
@@ -70,5 +71,6 @@ SidebarItem.propTypes = {
   title: PropTypes.string,
   url: PropTypes.string,
   bigIcon: PropTypes.bool,
+  active: PropTypes.bool,
   style: stylePropType
 };
