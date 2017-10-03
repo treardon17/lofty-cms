@@ -13,14 +13,16 @@ export default class SidebarItem extends React.Component {
     super(props);
 
     this.state = {
-      hovering: false
+      hovering: false,
     };
 
     this.animationDuration = 250;
     this.easing = 'ease-in-out';
+    this.clicked = false;
   }
 
   handleClicked() {
+    this.clicked = true;
     this.goToPage(this.props.url);
   }
 
@@ -29,8 +31,13 @@ export default class SidebarItem extends React.Component {
   }
 
   render() {
+    // Should the item be highlighted?
     const onCurrentPage = HistoryManager.history.location.pathname === this.props.url;
-    const classes = `sidebar-item ${this.props.bigIcon ? 'big-icon' : 'regular-icon'} ${(this.props.active || onCurrentPage) ? 'active' : 'inactive'}`;
+    const isActive = (this.props.active || onCurrentPage || this.clicked);
+    // Reset the click state after it's been rendered
+    this.clicked = false;
+    const classes = `sidebar-item ${this.props.bigIcon ? 'big-icon' : 'regular-icon'} ${isActive ? 'active' : 'inactive'}`;
+    // Render
     return (
       <button style={this.props.style} className={classes} onClick={this.handleClicked.bind(this)}>
         <VelocityComponent
