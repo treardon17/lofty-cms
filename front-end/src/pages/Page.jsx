@@ -4,12 +4,6 @@ import AppState from '../state/AppState.jsx';
 // import modules here
 import TitleSection from '../modules/TitleSection/TitleSection.jsx';
 
-const styles = {
-  titleSection: {
-    position: 'relative'
-  }
-};
-
 export default class Page extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +24,7 @@ export default class Page extends React.Component {
         className="page"
         {...this.props}
       >
-        <TitleSection style={styles.titleSection} title={this.props.title} titleSecondary="Lofty" />
+        <TitleSection title={this.props.title} titleSecondary="Lofty" />
         <div className="page-body">
           {this.props.children}
         </div>

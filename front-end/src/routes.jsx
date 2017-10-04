@@ -22,7 +22,7 @@ export default class Routes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageLoaded: false,
+      pageLoaded: null,
       animateIn: true,
       menuItems: [
         { icon: "/assets/img/icons/home.svg", title: "Home", url: "/" },
@@ -58,6 +58,12 @@ export default class Routes extends React.Component {
     this.setState({ pageLoaded: true });
   }
 
+  siteEntered() {
+    if (this.state.pageLoaded === null) {
+      this.setState({ pageLoaded: false });
+    }
+  }
+
   render() {
     // This is for page transitions
     const pageContent = this.state.animateIn ? (
@@ -66,23 +72,31 @@ export default class Routes extends React.Component {
       </div>
     ) : null;
 
+    /* eslint-disable */
+    let entranceAnimation = {}; // Defines the animation for start/end
+    let postAnimationStyles = {}; // Removes the transform: translateY(0) so we can use position: fixed correctly
+    if (this.state.pageLoaded === null) {
+      entranceAnimation = { opacity: 0, translateY: '100%' };
+    } else if (this.state.pageLoaded === false) {
+      entranceAnimation = { opacity: 1, translateY: '0%' };
+    } else {
+      entranceAnimation = null;
+      // postAnimationStyles = { transform: 'none' };
+      postAnimationStyles = { };
+    }
+
     // This is for loading the page
     return (
       <Router history={HistoryManager.history}>
         <div id="app-container">
           <VelocityComponent
             className="app-transition-container"
-            animation={this.state.pageLoaded ? {
-              opacity: 1,
-              marginTop: '0vh'
-            } : {
-              opacity: 0,
-              marginTop: '100vh'
-            }}
+            animation={entranceAnimation}
             duration={800}
             easing={[75, 15]}
+            complete={this.siteEntered.bind(this)}
           >
-            <div className="content-wrapper">
+            <div style={postAnimationStyles} className="content-wrapper">
               <Sidebar menuItems={this.state.menuItems} />
               <VelocityTransitionGroup
                 className="page-container"

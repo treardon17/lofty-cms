@@ -2,16 +2,22 @@
 @import '../../resources/styles/_mixins.scss';
 
 .title-section{
+  height: $header-height;
+  position: fixed;
+  top: 0;
   text-align: left;
-  // background-color: $orange;
-
+  width: 100%;
+  background-color: $blue;
+  display: flex;
+  align-items: center;
+  
   .title{
     display: inline-block;
     text-transform: lowercase;
     font-size: 40px;
     color: $white;
+    padding-left: $small-spacing;
     text-align: left;
-    padding: $small-spacing;
     margin: 0;
     position: relative;
 
