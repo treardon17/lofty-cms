@@ -3,7 +3,7 @@ import { VelocityComponent } from 'velocity-react';
 import PropTypes from 'prop-types';
 import ISVG from 'react-inlinesvg';
 import stylePropType from 'react-style-proptype';
-import HistoryManager from '../../history.js';
+import HistoryManager from '../../state/history';
 
 // scss
 import './SidebarItem.scss';

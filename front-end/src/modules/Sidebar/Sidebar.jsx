@@ -3,12 +3,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { VelocityComponent } from 'velocity-react';
 import SidebarItem from '../SidebarItem/SidebarItem.jsx';
+import API from '../../resources/scripts/API';
 
 // scss
 import './Sidebar.scss';
 
 export default class Sidebar extends React.Component {
   constructor(props) {
+    API.makeQuery('http://localhost:8080/graphql?query={moduleSettingOne(filter:{name:%22test-module%22}){name,fields}}').then((response) => {
+      console.log(response);
+    });
+
     super(props);
     this.openDuration = 250;
     this.itemDelay = 50;

@@ -11,6 +11,7 @@ $sidebarColor: $white;
   position: relative;
   background-color: $sidebarColor;
   min-height: 100vh;
+  z-index: $zTop;
 
   .sidebar-header{
     width: 100%;

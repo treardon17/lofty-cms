@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import { VelocityTransitionGroup, VelocityComponent } from 'velocity-react';
 import AppState from './state/AppState';
-import HistoryManager from './history.js';
+import HistoryManager from './state/history';
 // import modules
 import PageLoader from './modules/PageLoader/PageLoader.jsx';
 import Sidebar from './modules/Sidebar/Sidebar.jsx';
@@ -42,7 +42,7 @@ export default class Routes extends React.Component {
 
     // Listen for history changes
     HistoryManager.addRouteListener({ pushRoute: this.animateOut.bind(this) });
-    this.pageAnimationDuration = 500;
+    this.pageAnimationDuration = 300;
   }
 
   animateOut() {
@@ -87,7 +87,7 @@ export default class Routes extends React.Component {
               <VelocityTransitionGroup
                 className="page-container"
                 enter={{ animation: { opacity: 1, translateY: '0%' }, duration: this.pageAnimationDuration }}
-                leave={{ animation: { opacity: 0, translateY: '5%' }, duration: this.pageAnimationDuration, complete: this.animateIn.bind(this) }}
+                leave={{ animation: { opacity: 0, translateY: '0.5%' }, duration: this.pageAnimationDuration, complete: this.animateIn.bind(this) }}
               >
                 {pageContent}
               </VelocityTransitionGroup>

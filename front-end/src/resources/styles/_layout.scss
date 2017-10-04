@@ -8,6 +8,7 @@ html, body{
 }
 
 body {
+  background-color: $orange;
   font-family: 'Lato';
   text-align: center;
 }
@@ -39,7 +40,6 @@ body {
 // PAGE TRANSITIONS
 .page{
   height: 100vh;
-  background-color: #03a9f4;
   opacity: 1;
 
   &.page-transition-enter {

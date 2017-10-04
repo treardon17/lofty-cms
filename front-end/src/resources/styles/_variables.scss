@@ -19,6 +19,7 @@ $dark-white:      #D8E9F0;
 $grey:            #7F8488;
 $transparentGrey: rgba($grey, 0.3);
 $dark-gray:       #2F313E;
+$orange:          #e27056;
 
 // Layout
 $grid-small-phone-only:          450px;
@@ -36,3 +37,10 @@ $medium-spacing: 20px;
 $large-spacing: 40px;
 $extra-large-spacing: 60px;
 $closed-menu-icon-size: 45px;
+
+// Z-INDEX
+$zBottom: -1;
+$zLower: 100;
+$zMiddle: 200;
+$zUpper: 300;
+$zTop: 400;
