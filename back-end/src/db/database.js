@@ -13,7 +13,14 @@ class Database {
     });
 
     this.db = mongoose.connection;
+  }
+
+  setBinds() {
     this.db.on('error', console.error.bind(console, 'connection error:'));
+
+    this.pipe.stdout.on('data', function (data) { printback(data.toString('utf8')); });
+    this.pipe.stderr.on('data', (data) => { printback(data.toString('utf8')); });
+    this.pipe.on('close', (code) => { callback('Process exited with code: '+ code); });
   }
 }
 

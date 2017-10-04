@@ -15,7 +15,9 @@ const app = express();
 // const query = 'query { quotes { id, name, quote }}';
 // // const query = 'mutation { add(name: "santa", quote: "ho ho ho") {id, name, quote}  }';
 // // const query = 'mutation { add(name: "willy wonka", quote: "I like chocolate") {id, name, quote}  }';
-// graphql(Schema, query).then((result) => {
+// const query = 'mutation { moduleSettingCreate(record: {name: "test-module", fields: {a: 1, b: 2, c: [1, 2, 3, true, false, {sub: 1}]}}) {recordId,record{name,fields}}}';
+// const query = 'moduleSettingOne(filter: {name: "test-module"}) { name, fields }';
+// graphql(schema, query).then((result) => {
 //   console.log(JSON.stringify(result, null, ' '));
 // });
 
