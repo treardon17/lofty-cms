@@ -74,10 +74,10 @@ export default class Routes extends React.Component {
             className="app-transition-container"
             animation={this.state.pageLoaded ? {
               opacity: 1,
-              translateY: '0%'
+              marginTop: '0vh'
             } : {
               opacity: 0,
-              translateY: '50%'
+              marginTop: '100vh'
             }}
             duration={800}
             easing={[75, 15]}
@@ -86,8 +86,8 @@ export default class Routes extends React.Component {
               <Sidebar menuItems={this.state.menuItems} />
               <VelocityTransitionGroup
                 className="page-container"
-                enter={{ animation: { opacity: 1, translateY: '0%' }, duration: this.pageAnimationDuration }}
-                leave={{ animation: { opacity: 0, translateY: '0.5%' }, duration: this.pageAnimationDuration, complete: this.animateIn.bind(this) }}
+                enter={{ animation: { opacity: 1, marginTop: '0px' }, duration: this.pageAnimationDuration }}
+                leave={{ animation: { opacity: 0, marginTop: '5px' }, duration: this.pageAnimationDuration, complete: this.animateIn.bind(this) }}
               >
                 {pageContent}
               </VelocityTransitionGroup>

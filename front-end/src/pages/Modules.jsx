@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Page from './Page.jsx';
 import AppState from '../state/AppState.jsx';
 // import modules here
-import TitleSection from '../modules/TitleSection/TitleSection.jsx';
 
 export default class Modules extends React.Component {
   constructor(props) {
@@ -12,8 +11,8 @@ export default class Modules extends React.Component {
 
   render() {
     return (
-      <Page id="Modules">
-        <TitleSection title="Modules" titleSecondary="Lofty" />
+      <Page id="Modules" title="Modules">
+        <div />
       </Page>
     );
   }

@@ -14,7 +14,7 @@ export default class TitleSection extends React.Component {
 
   render() {
     return (
-      <div className="title-section">
+      <div style={this.props.style} className="title-section">
         <h2 className="title">
           <span className="secondary">{this.props.titleSecondary}</span>
           <span className="primary">{this.props.title}</span>
@@ -25,6 +25,7 @@ export default class TitleSection extends React.Component {
 }
 
 TitleSection.propTypes = {
+  style: PropTypes.instanceOf(Object),
   title: PropTypes.string,
   titleSecondary: PropTypes.string
 };

@@ -16,7 +16,7 @@ export default class SidebarItem extends React.Component {
       hovering: false,
     };
 
-    this.animationDuration = 250;
+    this.animationDuration = 200;
     this.easing = 'ease-in-out';
     this.clicked = false;
   }

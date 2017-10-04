@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppState from '../state/AppState.jsx';
-
 // import modules here
+import TitleSection from '../modules/TitleSection/TitleSection.jsx';
+
+const styles = {
+  titleSection: {
+    position: 'relative'
+  }
+};
 
 export default class Page extends React.Component {
   constructor(props) {
@@ -24,7 +30,10 @@ export default class Page extends React.Component {
         className="page"
         {...this.props}
       >
-        {this.props.children}
+        <TitleSection style={styles.titleSection} title={this.props.title} titleSecondary="Lofty" />
+        <div className="page-body">
+          {this.props.children}
+        </div>
       </div>
     );
   }
@@ -32,5 +41,6 @@ export default class Page extends React.Component {
 
 Page.propTypes = {
   state: PropTypes.instanceOf(AppState),
-  children: PropTypes.instanceOf(Object)
+  children: PropTypes.instanceOf(Object),
+  title: PropTypes.string
 };

@@ -12,8 +12,8 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <Page id="Home">
-        <TitleSection title="Home" titleSecondary="Lofty" />
+      <Page id="Home" title="Home">
+        <div />
       </Page>
     );
   }

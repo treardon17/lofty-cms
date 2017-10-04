@@ -6,48 +6,57 @@ $transition-duration: 500ms;
 $sidebarColor: $white;
 
 .sidebar{
-  // box-shadow: 2px 0px 10px rgba($black, 0.3);
   overflow: hidden;
   position: relative;
   background-color: $sidebarColor;
   min-height: 100vh;
   z-index: $zTop;
+  // box-shadow: 2px 0px 10px rgba($black, 0.3);
 
-  .sidebar-header{
-    width: 100%;
-    height: 100px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: $medium-spacing;
-
-    &::after{
-      content: '';
-      position: absolute;
-      bottom: 0; right: 0; left: 0;
-      margin: 0 auto;
-      width: 75%;
-      border-bottom: 1px solid $transparentGrey;
-    }
-
-    .header-content{
+  .sidebar-container{
+    position: fixed;
+    top: 0; left: 0;
+    
+    .sidebar-header{
+      width: 100%;
+      height: 100px;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 80%;
-
-      .sidebar-logo{
-        width: 100%;
-        height: $closed-menu-icon-size;
-        @include containImage();
-        background-image: url('/assets/img/lofty-logo.svg');
-        cursor: pointer;
-        background-color: transparent;
-        border: none;
-        outline: none !important;
+      margin-bottom: $medium-spacing;
+  
+      &::after{
+        content: '';
+        position: absolute;
+        bottom: 0; right: 0; left: 0;
+        margin: 0 auto;
+        width: 75%;
+        border-bottom: 1px solid $transparentGrey;
       }
-    }
+  
+      .header-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+  
+        .sidebar-logo{
+          width: 100%;
+          height: $closed-menu-icon-size;
+          @include containImage();
+          background-image: url('/assets/img/lofty-logo.svg');
+          cursor: pointer;
+          background-color: transparent;
+          border: none;
+          outline: none !important;
+        }
+      }
+    }  
+  }
+
+  .spacer{
+    position: relative;
   }
 
   // SIDE BAR CONTENT ---

@@ -11,7 +11,7 @@ import './Sidebar.scss';
 export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.openDuration = 250;
+    this.openDuration = 200;
     this.itemDelay = 50;
     this.itemDuration = 500;
 
@@ -19,7 +19,7 @@ export default class Sidebar extends React.Component {
       open: false
     };
 
-    API.makeQuery('http://localhost:8080/graphql?query={moduleSettingOne(filter:{name:%22test-module%22}){name,fields}}').then((response) => {
+    API.makeQuery('http://localhost:8080/graphql?query={moduleSettingOne(filter:{name:%22test-module%22}){name,fields}moduleSettingMany(filter:{name:%22test-module%22}){name,fields}}').then((response) => {
       console.log(response);
     });
   }
@@ -72,18 +72,31 @@ export default class Sidebar extends React.Component {
   // Render element
   render() {
     const classes = `sidebar-content ${(this.state.open ? 'open' : 'closed')}`;
+    const animation = this.state.open ? { width: "250px" } : { width: "70px" };
+    const easing = 'ease-in-out';
+
     return (
       <div className="sidebar">
-        { this.getSidebarHeader() }
         <VelocityComponent
-          animation={this.state.open ? { width: "250px" } : { width: "70px" }}
+          animation={animation}
           duration={this.openDuration}
-          easing={'ease-in-out'}
+          easing={easing}
         >
-          <div className={classes}>
-            { this.getSidebarMenuItems() }
-          </div>
+          <div className="spacer" />
         </VelocityComponent>
+
+        <div className="sidebar-container">
+          { this.getSidebarHeader() }
+          <VelocityComponent
+            animation={animation}
+            duration={this.openDuration}
+            easing={easing}
+          >
+            <div className={classes}>
+              { this.getSidebarMenuItems() }
+            </div>
+          </VelocityComponent>
+        </div>
       </div>
     );
   }
