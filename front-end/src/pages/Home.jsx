@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AppState from '../state/AppState.jsx';
 import Page from './Page.jsx';
 // import modules here
+import TitleSection from '../modules/TitleSection/TitleSection.jsx';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <Page id="Home">
-        <h1>Welcome home</h1>
+        <TitleSection title="Home" titleSecondary="Lofty" />
       </Page>
     );
   }

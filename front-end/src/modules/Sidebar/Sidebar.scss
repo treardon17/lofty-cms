@@ -6,8 +6,8 @@ $transition-duration: 500ms;
 $sidebarColor: $white;
 
 .sidebar{
+  // box-shadow: 2px 0px 10px rgba($black, 0.3);
   overflow: hidden;
-  box-shadow: 2px 0px 10px rgba($black, 0.3);
   position: relative;
   background-color: $sidebarColor;
   min-height: 100vh;

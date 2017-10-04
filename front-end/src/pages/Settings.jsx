@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Page from './Page.jsx';
 import AppState from '../state/AppState.jsx';
 // import modules here
+import TitleSection from '../modules/TitleSection/TitleSection.jsx';
 
 export default class Settings extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class Settings extends React.Component {
   render() {
     return (
       <Page id="Settings">
-        <h1>Welcome to the Settings page</h1>
+        <TitleSection title="Settings" titleSecondary="Lofty" />
       </Page>
     );
   }

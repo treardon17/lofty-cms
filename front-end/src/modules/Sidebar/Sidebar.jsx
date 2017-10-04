@@ -10,10 +10,6 @@ import './Sidebar.scss';
 
 export default class Sidebar extends React.Component {
   constructor(props) {
-    API.makeQuery('http://localhost:8080/graphql?query={moduleSettingOne(filter:{name:%22test-module%22}){name,fields}}').then((response) => {
-      console.log(response);
-    });
-
     super(props);
     this.openDuration = 250;
     this.itemDelay = 50;
@@ -22,6 +18,10 @@ export default class Sidebar extends React.Component {
     this.state = {
       open: false
     };
+
+    API.makeQuery('http://localhost:8080/graphql?query={moduleSettingOne(filter:{name:%22test-module%22}){name,fields}}').then((response) => {
+      console.log(response);
+    });
   }
 
   // Sidebar items with transitions
